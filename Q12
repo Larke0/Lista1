@@ -1,0 +1,29 @@
+Q12.
+#include <stdio.h>
+
+
+typedef int ponteirofun(int a);
+
+int vezes2(a){
+  a=2*a;
+ return a;
+}
+
+int div2(a){
+  a=a/2;
+ return a;
+}
+
+
+int main(void) {
+  ponteirofun *F;
+  int x=2;
+  printf("%d\n\n",x);
+  F=&vezes2;
+  x=F(x);
+  printf("%d\n\n",x);
+  F=&div2;
+  x=F(x);
+  printf("%d\n\n",x);
+  return 0;
+}
