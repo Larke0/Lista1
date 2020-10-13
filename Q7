@@ -1,0 +1,4 @@
+p = mat + 1;  | V
+p = mat++;    | F
+p = ++mat;    | F
+x = (*mat)++; | V é valida, porém o ++ não adiciona nada
