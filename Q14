@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int comparar (const void * a, const void * b) {
+   return ( *(int*)a - *(int*)b );
+}
+
+int main(void) {
+  int i, j, d, n=0, temp;
+  float *x;
+  char r[40];
+  FILE *Numeros;
+  Numeros=fopen("Numeros.txt","r");
+  for(i=0;feof(Numeros)==0;i++){
+    fscanf(Numeros, "%d", &d);
+    n++;
+  }
+  printf("Quantidade - %d\n\n", n);
+  fclose(Numeros);
+  Numeros=fopen("Numeros.txt","r");
+  x = (float*) malloc(n*sizeof(float));
+  for(i=0;feof(Numeros)==0;i++){
+    fscanf(Numeros, "%f", &x[i]);
+  }
+  for(i=0;i<n;i++){printf("%f ",x[i]);}
+  printf("\n\n");
+  qsort(x, n, sizeof(float),comparar);
+  for(i=0;i<n;i++){printf("%f ",x[i]);}
+  return 0;
+}
