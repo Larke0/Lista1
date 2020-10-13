@@ -1,0 +1,41 @@
+  return(a<b);
+}
+
+
+void sort(float *adress, int size){
+  int i, j;
+  float temp;
+  //printf("%f",*adress);
+  for(i=0;i<size;i++){
+    for(j=0;j<size;j++){
+      if(comparar(*(adress+i),*(adress+j))){
+        temp=*(adress+i);*(adress+i)=*(adress+j);*(adress+j)=temp;
+      }
+    }
+  }
+}
+
+int main(void) {
+  int i, j, d, n=0, temp;
+  float *x;
+  char r[40];
+  FILE *Numeros;
+  Numeros=fopen("Numeros.txt","r");
+  for(i=0;feof(Numeros)==0;i++){
+    fscanf(Numeros, "%d", &d);
+    n++;
+  }
+  printf("Quantidade - %d\n\n", n);
+  fclose(Numeros);
+  Numeros=fopen("Numeros.txt","r");
+  x = (float*) malloc(n*sizeof(float));
+  for(i=0;feof(Numeros)==0;i++){
+    fscanf(Numeros, "%f", &x[i]);
+  }
+  for(i=0;i<n;i++){printf("%0f ",x[i]);}
+  printf("\n\n");
+  sort(x, n);
+  for(i=0;i<n;i++){printf("%f ",x[i]);}
+  return 0;
+}
+
